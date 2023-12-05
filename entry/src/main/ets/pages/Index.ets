@@ -20,7 +20,7 @@ import SideBarContentBac from '../View/SideBarContentBac'
 import { CityModel } from '../model/CityModel'
 import { WeatherUiModel } from '../model/WeatherUiModel'
 import utils from '../utils/utils'
-import { getNowWeather, get7dWeather, get24hWeather } from '../network/api/WeatherApi'
+import { getNowWeather, get7dWeather, get24hWeather } from '../network/api/AxiosApi'
 import { NowWeatherModel, Weather7dModel, Weather24hModel } from '../model/NowWeatherModel'
 import util from '@ohos.util'
 
@@ -76,7 +76,7 @@ struct Index {
   // 获取天气
   async initData() {
     let resultNow = await getNowWeather(this.selectCity.locationId)
-    let weatherNow = resultNow.result as NowWeatherModel
+    let weatherNow = resultNow.data as NowWeatherModel
     this.weatherUiModel.nowTemp = weatherNow.now.temp
     this.weatherUiModel.precip = weatherNow.now.precip
     this.weatherUiModel.nowWeatherText = weatherNow.now.text
@@ -85,7 +85,7 @@ struct Index {
     // 获取24小时天气信息
     this.weatherUiModel.hoursArr = utils.getHoursArr()
     let result24h = await get24hWeather(this.selectCity.locationId)
-    let weather24h = result24h.result as Weather24hModel
+    let weather24h = result24h.data as Weather24hModel
     for (let index = 0; index < 5; index++) {
       this.weatherUiModel.hourlyTemp.push({temp: weather24h.hourly[index].temp})
     }
@@ -93,7 +93,7 @@ struct Index {
     // 获取近7日天气信息
     this.weatherUiModel.dayArr = utils.getDayArr()
     let result7d = await get7dWeather(this.selectCity.locationId)
-    let weather7d = result7d.result as Weather7dModel
+    let weather7d = result7d.data as Weather7dModel
     this.weatherUiModel.tempMax = weather7d.daily[0].tempMax
     this.weatherUiModel.tempMin = weather7d.daily[0].tempMin
     for (let index = 0; index < 5; index++) {

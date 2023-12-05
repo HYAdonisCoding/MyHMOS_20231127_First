@@ -32,6 +32,10 @@
           }
         ]
       }
-    ]
+    ],
+    'requestPermissions': [{
+//      网络权限
+      "name": 'ohos.permission.INTERNET'
+    }]
   }
 }

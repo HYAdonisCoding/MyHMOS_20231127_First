@@ -12,8 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
- import http from '@ohos.net.http';
+
+import http from '@ohos.net.http';
+
 const key = 'a546dd6657824b6882ec461255642293'
 
 // 实时天气
