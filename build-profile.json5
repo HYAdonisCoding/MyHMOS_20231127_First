@@ -6,9 +6,9 @@
         "type": "HarmonyOS",
         "material": {
           "certpath": "/Users/adam/.ohos/config/auto_debug_MyHMOS_20231127_First_com.example.myhmos_20231127_first_30086000742024029.cer",
-          "storePassword": "0000001ADADE4C04DF494E9D720170CACBA73DF41E4EA668295CDAF49D157B0E62928E3448D5CE412E5B",
+          "storePassword": "0000001A7D19ECFA11E476A68FD21C22ABBE41C2068301EE93C40A0C47C2F9B005678BBF1CDCD13310A6",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001A4358C963740F9FBD4455C443468285EEF7801B08A01F8B8CA3ABD4B7EA3F2A6CE5FB32360575",
+          "keyPassword": "0000001AF9C8B160DD38E22DCFF68A24A62390356420A69D35CC82991B56137710A08485F903F5BBE3AC",
           "profile": "/Users/adam/.ohos/config/auto_debug_MyHMOS_20231127_First_com.example.myhmos_20231127_first_30086000742024029.p7b",
           "signAlg": "SHA256withECDSA",
           "storeFile": "/Users/adam/.ohos/config/auto_debug_MyHMOS_20231127_First_com.example.myhmos_20231127_first_30086000742024029.p12"

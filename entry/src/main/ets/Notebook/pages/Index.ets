@@ -57,6 +57,9 @@ struct Index {
             .width('100%')
             .onChange((search) => {
               // todo 搜索笔记
+              this.dbApi.queryNote(search, (noteInfoList) => {
+                this.noteInfoList = noteInfoList
+              })
 
             })
         }

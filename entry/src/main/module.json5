@@ -33,9 +33,41 @@
         ]
       }
     ],
-    'requestPermissions': [{
+    'requestPermissions': [
 //      网络权限
-      "name": 'ohos.permission.INTERNET'
-    }]
+//      {
+//        "name": 'ohos.permission.INTERNET',
+//        "reason": "$string:reason_INTERNET",
+//        "usedScene": {
+//          "abilities": [
+//            "FormAbility"
+//          ],
+//          "when":"inuse"
+//        }
+//      },
+//      {
+//        "name": 'ohos.permission.CAMERA',//允许应用使用相机拍摄照片和录制视频。
+//        "reason": "$string:reason_Picture",
+//        "usedScene": {
+//          "abilities": [
+//            "FormAbility"
+//          ],
+//          "when":"inuse"
+//        }
+//      },
+//      {
+//        "name": 'ohos.permission.READ_IMAGEVIDEO',//允许读取用户公共目录的图片或视频文件。
+//        "reason": "$string:reason_Picture",
+//        "usedScene": {
+////          "abilities": [
+////            "FormAbility"
+////          ],
+//          "when":"inuse"
+//        }
+//      }
+
+
+    ],
+
   }
 }

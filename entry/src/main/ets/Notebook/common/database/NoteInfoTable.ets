@@ -195,6 +195,56 @@ export class NoteInfoTable {
       Logger.info(Tag, err);
     }
   }
+
+  /**
+   * 查询全部笔记
+   * @param callback 查询成功的回调函数
+   */
+  queryNote(keywords, callback) {
+    try {
+      // 获取RdbStore
+      this.getRdbStore(() => {
+        // 获取RdbPredicates
+        let predicates = new data_rdb.RdbPredicates(NOTE_INFO.tableName)
+        predicates.like('title', keywords)
+        // 按照date字段降序排序
+        predicates.orderByDesc('date');
+
+        // 查询数据
+        this.rdbStore.query(predicates, NOTE_INFO.columns, (err, resultSet) => {
+          if (err) {
+            Logger.info(Tag, "query failed, err: " + err)
+            return
+          }
+          let result: Array<NoteInfo> = []
+          let count = resultSet.rowCount
+          if (count === 0) {
+            callback(result)
+          } else {
+            // 跳转到第一行
+            resultSet.goToFirstRow()
+            for (let i = 0;i < count; i++) {
+              let tem = new NoteInfo(0, '', '', '', '')
+              // 获取数据
+              tem.id = resultSet.getDouble(resultSet.getColumnIndex('id'))
+              tem.date = resultSet.getString(resultSet.getColumnIndex('date'))
+              tem.title = resultSet.getString(resultSet.getColumnIndex('title'))
+              tem.content = resultSet.getString(resultSet.getColumnIndex('content'))
+              tem.imageArr = resultSet.getString(resultSet.getColumnIndex('imageArr'))
+              result[i] = tem
+              // 跳转到下一行
+              resultSet.goToNextRow()
+            }
+            resultSet.close()
+            callback(result)
+          }
+        })
+      })
+    } catch (err) {
+      callback([]);
+      Logger.info(Tag, err);
+    }
+  }
 }
 
 // 数据转换

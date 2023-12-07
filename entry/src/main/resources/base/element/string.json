@@ -91,6 +91,14 @@
     {
       "name": "dialog_change_name",
       "value": "修改记事本名称"
+    },
+    {
+      "name": "reason_INTERNET",
+      "value": "需要使用您的网络以获取数据"
+    },
+    {
+      "name": "reason_Picture",
+      "value": "需要访问您的图库"
     }
   ]
 }

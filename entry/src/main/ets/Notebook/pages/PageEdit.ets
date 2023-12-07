@@ -121,7 +121,7 @@ struct PageEdit {
             .width(98)
             .height(98)
             .onClick((e) => {
-              // todo 添加图片
+              this.selectPicture()
             })
         }
       }
@@ -135,5 +135,33 @@ struct PageEdit {
     .padding({ left: CommonConstants.MARGIN_2, right: CommonConstants.MARGIN_2 })
     .backgroundColor($r('app.color.background'))
     .alignItems(HorizontalAlign.Start)
+  }
+  selectPicture() {
+    let startParmameter = {
+      bundleName:"com.ohos.photos",
+      abilityName: "com.ohos.photos.MainAbility",
+      parameters: {
+        uri: "singleselect"
+      }
+    };
+    globalThis.context.startAbilityForResult(startParmameter).then((result) => {
+      console.info(`startAbilityForResult Promise.resolve is called, result.resultCode =  ${JSON.stringify(result)}`)
+      let want = result['want'];
+      console.info(`test select single ${JSON.stringify(want)}`);
+      if (want != null && want != undefined) {
+        let param = want['parameters'];
+        console.info(`test select single ${JSON.stringify(param)}`);
+        if (param != null && param != undefined) {
+          let uri = param['select-item-list'];
+          console.info(`test select single ${uri[0]}`);
+          this.imageArray = uri
+          this.noteInfo.imageArr = JSON.stringify(uri)
+          this.isChange()
+
+        }
+      }
+    }, (error) => {
+      console.info(`startAbilityForResult Promise.Reject is called, error.code = ${error.code}`)
+    })
   }
 }
